@@ -28,6 +28,17 @@ const userSchema = new mongoose.Schema({
     type: Date,
     default: Date.now()
   },
+  cart:{
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'Cart',
+  },
+  orders: [{
+    order: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: 'Order',
+      required: true
+    }
+  }],
   deleteAt: Date
 })
 
