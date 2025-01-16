@@ -5,41 +5,39 @@ const userSchema = new mongoose.Schema({
     type: String,
     required: true,
     unique: true,
-    trim: true
+    trim: true,
   },
   email: {
     type: String,
     required: true,
     unique: true,
-    trim: true
+    trim: true,
   },
-  password:{
+  password: {
     type: String,
-    required: true
+    required: true,
   },
-  role:{
+  role: {
     type: String,
-    enum: ['user','seller','admin'],
-    default: 'user'
+    enum: ["user", "seller", "admin", "shipper"],
+    default: "user",
   },
   phone: String,
   address: String,
   createAt: {
     type: Date,
-    default: Date.now()
+    default: Date.now(),
   },
-  cart:{
-    type: mongoose.Schema.Types.ObjectId,
-    ref: 'Cart',
-  },
-  orders: [{
-    order: {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: 'Order',
-      required: true
-    }
-  }],
-  deleteAt: Date
-})
+  orders: [
+    {
+      order: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "Order",
+        required: true,
+      },
+    },
+  ],
+  deleteAt: Date,
+});
 
-export const User = mongoose.model('User',userSchema);
+export const User = mongoose.model("User", userSchema);
