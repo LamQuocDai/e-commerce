@@ -15,8 +15,10 @@ const categoryService = {
 
   // Get a category by id
   getCategoryById: async (id) => {
+    if (!id) {
+      throw new AppError("Id required", 504);
+    }
     const category = await Category.findById(id);
-
     if (!category) {
       throw new AppError("Not found category", 505);
     }
@@ -25,6 +27,9 @@ const categoryService = {
 
   // Update a category
   updateCategory: async (id, categoryData) => {
+    if (!id) {
+      throw new AppError("Id required", 504);
+    }
     const category = await Category.findById(id);
     if (!category) {
       throw new AppError("Category not found", 505);
@@ -34,6 +39,9 @@ const categoryService = {
 
   // Delete a category
   deleteCategory: async (id) => {
+    if (!id) {
+      throw new AppError("Id required", 504);
+    }
     const category = await Category.findById(id);
     if (!category) {
       throw new AppError("Category not found", 505);

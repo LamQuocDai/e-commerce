@@ -1,6 +1,6 @@
 import paymentService from "../services/paymentService.js";
 
-const paymentService = {
+const paymentController = {
   addController: async (req, res) => {},
   getAllPayments: async (req, res) => {},
   getPaymentById: async (req, res) => {},
@@ -8,4 +8,4 @@ const paymentService = {
   deletePayment: async (req, res) => {},
 };
 
-export default paymentService;
+export default paymentController;

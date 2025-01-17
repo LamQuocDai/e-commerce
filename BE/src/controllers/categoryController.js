@@ -9,7 +9,7 @@ const categoryController = {
       const category = await categoryService.addCategory(req.body);
       Response.success(res, "Add category success.", category);
     } catch (error) {
-      Response.error(res, error.message);
+      Response.error(res, error.message, error.statusCode || 500);
     }
   },
 
@@ -19,7 +19,7 @@ const categoryController = {
       const categories = await categoryService.getAllCategories();
       Response.success(res, "Get all category success", categories);
     } catch (error) {
-      Response.error(res, error.message);
+      Response.error(res, error.message, error.statusCode || 500);
     }
   },
 
@@ -38,7 +38,6 @@ const categoryController = {
   // Update a category
   updateCategory: async (req, res) => {
     try {
-      console.log(req.params);
       const { id } = req.params;
       const category = await categoryService.updateCategory(id, req.body);
 
@@ -52,7 +51,6 @@ const categoryController = {
   deleteCategory: async (req, res) => {
     try {
       const { id } = req.params;
-
       const category = await categoryService.deleteCategory(id);
 
       Response.success(res, "Delete cataegory success", category);
