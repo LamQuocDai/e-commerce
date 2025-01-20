@@ -1,4 +1,5 @@
 import { User } from "../models/User.js";
+import { Cart } from "../models/Cart.js";
 import AppError from "../utils/AppError.js";
 import { isEmailValid, isPhoneNumber } from "../utils/Validator.js";
 
@@ -6,7 +7,9 @@ const userService = {
   addUser: async (userData) => {
     const user = new User(userData);
     if (!isEmailValid(user.email)) throw new AppError("Email is invalid");
-    if (!isPhoneNumber(user.phone)) throw new AppError("Phone number is invalid");
+    if (!isPhoneNumber(user.phone))
+      throw new AppError("Phone number is invalid");
+    await new Cart({ user: user._id }).save();
     return await user.save();
   },
   getAllUsers: async () => {
