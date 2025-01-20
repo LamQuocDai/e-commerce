@@ -13,12 +13,15 @@ const categorySchema = new mongoose.Schema({
     required: true
   },
   products: [{
-    product: {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: 'Product',
-      required: true
-    }
-  }]
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'Product',
+    required: true
+  }],
+  createAt: {
+    type: Date,
+    default: Date.now()
+  },
+  deleteAt: Date
 })
 
 export const Category = mongoose.model('Category', categorySchema);

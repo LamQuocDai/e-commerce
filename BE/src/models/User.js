@@ -31,11 +31,9 @@ const userSchema = new mongoose.Schema({
   },
   orders: [
     {
-      order: {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: "Order",
-        required: true,
-      },
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "Order",
+      required: true,
     },
   ],
   deleteAt: Date,

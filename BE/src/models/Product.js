@@ -40,27 +40,14 @@ const productSchema = new mongoose.Schema({
   },
   quantity:{
     type: Number,
-    required:true,
-    min: 1,
+    min: 0,
     default: 0
   },
-  size: [{
+  option: [{
     name: {
       type: String,
       required: true
     },
-    quantity: {
-      type: Number,
-      required: true,
-      min: 0
-    }
-  }],
-  color: [{
-    name: {
-      type: String,
-      required: true
-    },
-    code: String,
     quantity: {
       type: Number,
       required: true,
